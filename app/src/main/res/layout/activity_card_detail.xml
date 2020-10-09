@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cardDetail"
+    android:padding="6dp">
+
+    <ImageView
+        android:id="@+id/carddetail_image"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:src="@drawable/ic_launcher_background"
+        android:scaleX="1.5"/>
+
+    <TextView
+        android:id="@+id/namedetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name Detail"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#000"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/carddetail_image"/>
+
+    <TextView
+        android:id="@+id/pricedetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/namedetail"
+        android:textColor="#000"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="Price Detail"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/add_to_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Add to Cart"
+        android:textColor="#000"/>
+
+</RelativeLayout>

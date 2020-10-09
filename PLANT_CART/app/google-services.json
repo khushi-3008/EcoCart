@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "945859708142",
+    "firebase_url": "https://plant-cart.firebaseio.com",
+    "project_id": "plant-cart",
+    "storage_bucket": "plant-cart.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945859708142:android:670be4bd1ce2df12325fff",
+        "android_client_info": {
+          "package_name": "com.example.plant_cart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "945859708142-ag2buonehcorsk7mvd3ui4d1qblurpta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWpMHb_-QOdRnf_QLDimVpf2Y_cYF-heg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "945859708142-ag2buonehcorsk7mvd3ui4d1qblurpta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
