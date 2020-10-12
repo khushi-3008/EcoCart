@@ -17,12 +17,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,6 +41,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
@@ -126,20 +129,21 @@ public class cart extends AppCompatActivity  {
                     }
                 });
 
-                holder.numberButton.setOnClickListener(new ElegantNumberButton.OnClickListener() {
+                holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onClick(View view) {
-                         String num = holder.numberButton.getNumber();
-                         holder.card_quantity.setText(num);
-                         holder.n=num;
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        String snum = adapterView.getItemAtPosition(i).toString();
+                        holder.card_quantity.setText(snum);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
 
                     }
                 });
 
-                DocumentReference documentReference = firebaseFirestore.collection("users").document(mAuth.getUid()).collection(cardDetail.cnt+"").document(model.getName().toLowerCase());
-                HashMap<String, Object> updatequantity = new HashMap<>();
-                updatequantity.put("quantity" , holder.n);
-                documentReference.update(updatequantity);
+
+
             }
 
         };
@@ -156,9 +160,7 @@ public class cart extends AppCompatActivity  {
         ImageView cart_image;
         ImageView cart_delete;
         TextView card_quantity;
-        ElegantNumberButton numberButton;
-        String n;
-
+        Spinner spinner;
 
         public cartViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -168,7 +170,16 @@ public class cart extends AppCompatActivity  {
             cart_image = itemView.findViewById(R.id.cart_image);
             cart_delete = itemView.findViewById(R.id.delete);
             card_quantity = itemView.findViewById(R.id.cart_quantity);
-            numberButton = itemView.findViewById(R.id.number_button);
+            spinner = itemView.findViewById(R.id.spinner);
+
+            ArrayList<String> numberlist = new ArrayList<>();
+
+            for (int i = 1;i<=100;i++)
+            {
+                numberlist.add(String.valueOf(i));
+            }
+
+            spinner.setAdapter(new ArrayAdapter<>(cart.this, android.R.layout.simple_spinner_dropdown_item,numberlist));
         }
     }
 

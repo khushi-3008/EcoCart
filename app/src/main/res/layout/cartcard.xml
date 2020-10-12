@@ -55,18 +55,13 @@
             android:text="Text View"
             android:textSize="25dp" />
 
-        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
-            android:layout_height="30dp"
-            android:layout_width="70dp"
-            app:textSize="8sp"
-            app:textColor="#000000"
-            android:id="@+id/number_button"
-            app:backGroundColor="#ffffff"
-            android:layout_below="@id/cart_price"
-            android:layout_toRightOf="@+id/cart_image"
+        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+            android:id="@+id/spinner"
             android:layout_marginTop="4dp"
-            app:initialNumber="1"
-            android:layout_toEndOf="@+id/cart_image" />
+            android:layout_width="70dp"
+            android:layout_below="@+id/cart_price"
+            android:layout_toRightOf="@+id/cart_image"
+            android:layout_height="30dp" />
 
         <ImageView
             android:id="@+id/delete"
@@ -74,8 +69,9 @@
             android:layout_height="30dp"
             android:layout_marginTop="4dp"
             android:src="@drawable/ic_delete_24"
-            android:layout_toRightOf="@+id/number_button"
-            android:layout_below="@+id/cart_price"/>
+            android:layout_toRightOf="@+id/spinner"
+            android:layout_below="@+id/cart_price"
+            android:layout_toEndOf="@+id/spinner" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

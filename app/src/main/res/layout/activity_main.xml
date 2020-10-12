@@ -7,7 +7,6 @@
     tools:context=".MainActivity"
     android:id="@+id/drawer">
 
-
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationdrawer"
         app:headerLayout="@layout/drawerimage"
