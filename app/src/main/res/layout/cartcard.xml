@@ -55,13 +55,23 @@
             android:text="Text View"
             android:textSize="25dp" />
 
-        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
-            android:id="@+id/spinner"
+
+        <it.sephiroth.android.library.numberpicker.NumberPicker
+            android:id="@+id/numberPicker"
+            style="@style/NumberPicker.Filled"
+            app:picker_max="1000"
+            app:picker_min="0"
+            app:picker_stepSize="1"
             android:layout_marginTop="4dp"
-            android:layout_width="70dp"
+            app:picker_tracker="exponential"
+            app:picker_orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:progress="1"
+            app:picker_disableGestures="true"
             android:layout_below="@+id/cart_price"
             android:layout_toRightOf="@+id/cart_image"
-            android:layout_height="30dp" />
+            android:layout_toEndOf="@+id/cart_image" />
 
         <ImageView
             android:id="@+id/delete"
@@ -69,9 +79,9 @@
             android:layout_height="30dp"
             android:layout_marginTop="4dp"
             android:src="@drawable/ic_delete_24"
-            android:layout_toRightOf="@+id/spinner"
+            android:layout_toRightOf="@+id/numberPicker"
             android:layout_below="@+id/cart_price"
-            android:layout_toEndOf="@+id/spinner" />
+            android:layout_toEndOf="@+id/numberPicker" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

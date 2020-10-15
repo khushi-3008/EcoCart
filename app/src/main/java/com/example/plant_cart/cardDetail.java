@@ -84,12 +84,17 @@ public class cardDetail extends AppCompatActivity {
             @Override
             public final void onClick(View view) {
                 cnt++;
+                DocumentReference documentReference1 = firebaseFirestore.collection("users").document(mAuth.getUid()).collection(cardDetail.cnt+"").document(name.toLowerCase()).collection("quantity").document(name.toLowerCase());
+                HashMap<String,Object> quantity = new HashMap<>();
+                quantity.put("quantity","1");
+                documentReference1.set(quantity);
+
                 DocumentReference documentReference = firebaseFirestore.collection("users").document(mAuth.getUid()).collection(cnt+"").document(name.toLowerCase());
                 HashMap<String, Object> add_to_cart = new HashMap<>();
                 add_to_cart.put("name", name);
                 add_to_cart.put("price", price);
                 add_to_cart.put("image", pic);
-                add_to_cart.put("quantity", "1"+"");
+                add_to_cart.put("quantity","1");
 
                 documentReference.set(add_to_cart).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

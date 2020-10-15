@@ -2,58 +2,55 @@ package com.example.plant_cart;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
+import android.media.AudioMetadata;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
-public class cart extends AppCompatActivity  {
+import java.util.HashMap;
+
+import it.sephiroth.android.library.numberpicker.NumberPicker;
+
+public class cart extends AppCompatActivity {
 
     RecyclerView recycler_cart;
     Button btn_proceed;
+    TextView cart_price;
     private FirebaseFirestore firebaseFirestore;
     private FirestoreRecyclerAdapter adapter;
     private FirebaseAuth mAuth;
-
+    int samount;
+    int stotalamount = 0;
 
 
     @Override
@@ -63,6 +60,7 @@ public class cart extends AppCompatActivity  {
 
         recycler_cart = findViewById(R.id.recycler_cart);
         btn_proceed = findViewById(R.id.proceedtobill_btn);
+        cart_price = findViewById(R.id.total_cartPrice);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -70,6 +68,7 @@ public class cart extends AppCompatActivity  {
         btn_proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                stotalamount=0;
                 Intent intent = new Intent(cart.this , bill.class);
                 finish();
                 startActivity(intent);
@@ -94,9 +93,13 @@ public class cart extends AppCompatActivity  {
             @Override
             protected void onBindViewHolder(@NonNull final cart.cartViewHolder holder, final int position, @NonNull final cartModel model) {
 
-
                 holder.cart_name.setText(model.getName());
                 holder.cart_price.setText(model.getPrice());
+
+                int amount = Integer.parseInt(model.getPrice());
+                int totalamount = 0;
+                totalamount+=amount;
+                cart_price.setText(String.valueOf(totalamount));
 
                 //Image view in recycler view from firebase storage
                 Picasso.get().load(model.getImage()).into(holder.cart_image);
@@ -115,6 +118,7 @@ public class cart extends AppCompatActivity  {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 if (i==1){
+
                                     //adapter.notifyDataSetChanged();
                                     firebaseFirestore.collection("users").document(mAuth.getUid()).collection(cardDetail.cnt+"").document(model.getName().toLowerCase()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
@@ -129,17 +133,50 @@ public class cart extends AppCompatActivity  {
                     }
                 });
 
-                holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                holder.numberPicker.setMinValue(1);
+                holder.numberPicker.setMaxValue(1000);
+
+                holder.numberPicker.setNumberPickerChangeListener(new  NumberPicker.OnNumberPickerChangeListener() {
                     @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        String snum = adapterView.getItemAtPosition(i).toString();
-                        holder.card_quantity.setText(snum);
+                    public void onProgressChanged(@NotNull NumberPicker numberPicker, int i, boolean b) {
+
+                            String qty = String.valueOf(i) ;
+                            DocumentReference documentReference = firebaseFirestore.collection("users").document(mAuth.getUid()).collection(cardDetail.cnt+"").document(model.getName().toLowerCase()).collection("quantity").document(model.getName().toLowerCase());
+                            HashMap<String,Object> quantity = new HashMap<>();
+                            quantity.put("quantity",qty);
+                            documentReference.set(quantity);
+
+                        final DocumentReference documentReference1 = firebaseFirestore.collection("users").document(mAuth.getUid()).collection(cardDetail.cnt+"").document(model.getName().toLowerCase()).collection("quantity").document(model.getName().toLowerCase());
+                        documentReference1.get()
+                                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if (task.isSuccessful()){
+                                            DocumentSnapshot snapshot = task.getResult();
+                                            stotalamount=stotalamount-(Integer.parseInt(model.getPrice())*Integer.parseInt(holder.quantity));
+                                            holder.quantity = snapshot.getString("quantity");
+                                            samount = Integer.parseInt(model.getPrice()) * Integer.parseInt(holder.quantity);
+                                            stotalamount += samount;
+                                            cart_price.setText(stotalamount+"");
+                                        }
+                                        else {
+                                            Toast.makeText(cart.this, "Error!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
                     }
 
                     @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
+                    public void onStartTrackingTouch(@NotNull NumberPicker numberPicker) {
 
                     }
+
+                    @Override
+                    public void onStopTrackingTouch(@NotNull NumberPicker numberPicker) {
+
+                    }
+
                 });
 
 
@@ -159,8 +196,8 @@ public class cart extends AppCompatActivity  {
         TextView cart_price;
         ImageView cart_image;
         ImageView cart_delete;
-        TextView card_quantity;
-        Spinner spinner;
+        NumberPicker numberPicker;
+        String quantity="0";
 
         public cartViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -169,17 +206,7 @@ public class cart extends AppCompatActivity  {
             cart_price = itemView.findViewById(R.id.cart_price);
             cart_image = itemView.findViewById(R.id.cart_image);
             cart_delete = itemView.findViewById(R.id.delete);
-            card_quantity = itemView.findViewById(R.id.cart_quantity);
-            spinner = itemView.findViewById(R.id.spinner);
-
-            ArrayList<String> numberlist = new ArrayList<>();
-
-            for (int i = 1;i<=100;i++)
-            {
-                numberlist.add(String.valueOf(i));
-            }
-
-            spinner.setAdapter(new ArrayAdapter<>(cart.this, android.R.layout.simple_spinner_dropdown_item,numberlist));
+            numberPicker = itemView.findViewById(R.id.numberPicker);
         }
     }
 
