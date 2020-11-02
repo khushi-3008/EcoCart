@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0833CC33"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:id="@+id/drawer">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationdrawer"
-        app:headerLayout="@layout/drawerimage"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:itemTextColor="#000000"
-        app:menu="@menu/drawermenu"
-        android:layout_gravity="start">
-
-    </com.google.android.material.navigation.NavigationView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_navigation"
+        app:itemBackground="@color/white"
+        android:background="#ffffff"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom"
+        android:layout_alignParentBottom="true" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="65dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,26 +40,28 @@
                     android:id="@+id/slider"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     app:auto_cycle="true"
                     app:corner_radius="0"
                     app:delay="0"
                     app:flow_wrapMode="aligned"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.116"
-                    app:period="3000">
-                </com.denzcoskun.imageslider.ImageSlider>
+                    app:period="3000"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/avenuec"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/slider">
+                    android:layout_below="@+id/slider"
+                    android:layout_margin="10dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -63,32 +69,33 @@
 
                         <ImageView
                             android:id="@+id/avenue"
-                            android:layout_width="190dp"
-                            android:layout_height="200dp"
-                            android:scaleY="1"
-                            android:layout_marginRight="5dp"
-                            android:src="@drawable/avenue"
-                            android:layout_marginEnd="5dp" />
+                            android:layout_width="170dp"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avenue" />
 
                         <Button
                             android:id="@+id/avenuebtn"
-                            android:layout_width="190dp"
+                            android:layout_width="170dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginTop="131dp"
+                            android:background="#80000000"
                             android:hint="AVENUE PLANTS"
                             android:textColorHint="#FFFFFF"
-                            android:textStyle="bold"
                             android:textSize="20dp"
-                            android:background="#80000000"/>
+                            android:textStyle="bold" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/floralc"
-                    android:layout_below="@+id/slider"
-                    android:layout_toRightOf="@+id/avenuec"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/slider"
+                    android:layout_margin="10dp"
+                    android:layout_toRightOf="@+id/avenuec"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -96,25 +103,21 @@
 
                         <ImageView
                             android:id="@+id/flowering"
-                            android:layout_width="190dp"
-                            android:layout_height="200dp"
-                            android:scaleY="1.5"
-                            android:layout_marginLeft="5dp"
-                            android:src="@drawable/floral"
-                            android:layout_marginStart="5dp" />
+                            android:layout_width="170dp"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/floral" />
 
                         <Button
                             android:id="@+id/floralbtn"
-                            android:layout_width="190dp"
+                            android:layout_width="170dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginTop="131dp"
+                            android:background="#80000000"
                             android:hint="FLORAL PLANTS"
                             android:textColorHint="#FFFFFF"
-                            android:textStyle="bold"
                             android:textSize="20dp"
-                            android:layout_marginLeft="5dp"
-                            android:background="#80000000"
-                            android:layout_marginStart="5dp" />
+                            android:textStyle="bold" />
 
                     </RelativeLayout>
 
@@ -122,9 +125,12 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fruitc"
-                    android:layout_below="@+id/avenuec"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/avenuec"
+                    android:layout_margin="10dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -132,18 +138,16 @@
 
                         <ImageView
                             android:id="@+id/fruit"
-                            android:layout_width="190dp"
-                            android:layout_height="200dp"
-                            android:scaleY="1.5"
-                            android:layout_marginRight="5dp"
-                            android:src="@drawable/fruit"
-                            android:layout_marginEnd="5dp" />
+                            android:layout_width="170dp"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/fruit" />
 
                         <Button
                             android:id="@+id/fruitbtn"
-                            android:layout_width="190dp"
+                            android:layout_width="170dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="145dp"
+                            android:layout_marginTop="131dp"
                             android:background="#80000000"
                             android:hint="FRUIT PLANTS"
                             android:textColorHint="#FFFFFF"
@@ -156,10 +160,13 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/indoorc"
-                    android:layout_toRightOf="@+id/fruitc"
-                    android:layout_below="@+id/floralc"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/floralc"
+                    android:layout_margin="10dp"
+                    android:layout_toRightOf="@+id/fruitc"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -167,25 +174,21 @@
 
                         <ImageView
                             android:id="@+id/indoor"
-                            android:layout_width="190dp"
-                            android:layout_height="200dp"
-                            android:scaleY="1"
-                            android:layout_marginLeft="5dp"
-                            android:src="@drawable/indoor"
-                            android:layout_marginStart="5dp" />
+                            android:layout_width="170dp"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/indoor" />
 
                         <Button
                             android:id="@+id/indoorbtn"
-                            android:layout_width="190dp"
+                            android:layout_width="170dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginTop="131dp"
+                            android:background="#80000000"
                             android:hint="INDOOR PLANTS"
                             android:textColorHint="#FFFFFF"
-                            android:textStyle="bold"
                             android:textSize="20dp"
-                            android:layout_marginLeft="5dp"
-                            android:background="#80000000"
-                            android:layout_marginStart="5dp" />
+                            android:textStyle="bold" />
 
                     </RelativeLayout>
 
@@ -193,9 +196,12 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/medicinalc"
-                    android:layout_below="@+id/fruitc"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fruitc"
+                    android:layout_margin="10dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -203,23 +209,21 @@
 
                         <ImageView
                             android:id="@+id/medicinal"
-                            android:layout_width="190dp"
-                            android:layout_height="200dp"
-                            android:scaleY="1.5"
-                            android:layout_marginRight="5dp"
-                            android:src="@drawable/medicine"
-                            android:layout_marginEnd="5dp" />
+                            android:layout_width="170dp"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/medicine" />
 
                         <Button
                             android:id="@+id/medicinalbtn"
-                            android:layout_width="190dp"
+                            android:layout_width="170dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginTop="131dp"
+                            android:background="#80000000"
                             android:hint="MEDICINAL PLANTS"
                             android:textColorHint="#FFFFFF"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:background="#80000000"/>
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
 
                     </RelativeLayout>
 
@@ -227,11 +231,14 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/outdoorc"
-                    android:layout_below="@+id/indoorc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/indoorc"
+                    android:layout_margin="10dp"
                     android:layout_toEndOf="@id/medicinalc"
-                    android:layout_toRightOf="@id/medicinalc">
+                    android:layout_toRightOf="@id/medicinalc"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -239,25 +246,21 @@
 
                         <ImageView
                             android:id="@+id/outdoor"
-                            android:layout_width="190dp"
-                            android:layout_height="200dp"
-                            android:scaleY="2"
-                            android:layout_marginLeft="5dp"
-                            android:src="@drawable/outdoor"
-                            android:layout_marginStart="5dp"/>
+                            android:layout_width="170dp"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/outdoor" />
 
                         <Button
                             android:id="@+id/outdoorbtn"
-                            android:layout_width="190dp"
+                            android:layout_width="170dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginTop="131dp"
+                            android:background="#80000000"
                             android:hint="OUTDOOR PLANTS"
                             android:textColorHint="#FFFFFF"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="5dp"
-                            android:background="#80000000"
-                            android:layout_marginStart="5dp"/>
+                            android:textSize="19dp"
+                            android:textStyle="bold" />
 
                     </RelativeLayout>
 
@@ -265,9 +268,12 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/palmc"
-                    android:layout_below="@+id/medicinalc"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/medicinalc"
+                    android:layout_margin="10dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -275,23 +281,21 @@
 
                         <ImageView
                             android:id="@+id/palm"
-                            android:layout_width="190dp"
-                            android:layout_height="200dp"
-                            android:scaleY="1"
-                            android:layout_marginRight="5dp"
-                            android:src="@drawable/palm"
-                            android:layout_marginEnd="5dp" />
+                            android:layout_width="170dp"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/palm" />
 
                         <Button
                             android:id="@+id/palmbtn"
-                            android:layout_width="190dp"
+                            android:layout_width="170dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginTop="131dp"
+                            android:background="#80000000"
                             android:hint="PALM PLANTS"
                             android:textColorHint="#FFFFFF"
-                            android:textStyle="bold"
                             android:textSize="20dp"
-                            android:background="#80000000"/>
+                            android:textStyle="bold" />
 
                     </RelativeLayout>
 
@@ -301,7 +305,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/outdoorc"
-                    android:layout_toRightOf="@id/palmc">
+                    android:layout_margin="10dp"
+                    android:id="@+id/potc"
+                    android:layout_toRightOf="@id/palmc"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -309,25 +317,21 @@
 
                         <ImageView
                             android:id="@+id/pot"
-                            android:layout_width="190dp"
-                            android:layout_height="200dp"
-                            android:scaleY="1"
-                            android:layout_marginLeft="5dp"
-                            android:src="@drawable/pots"
-                            android:layout_marginStart="5dp"/>
+                            android:layout_width="170dp"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/pots" />
 
                         <Button
                             android:id="@+id/potbtn"
-                            android:layout_width="190dp"
+                            android:layout_width="170dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginTop="131dp"
+                            android:background="#80000000"
                             android:hint="POTS AND SEEDS"
                             android:textColorHint="#FFFFFF"
-                            android:textStyle="bold"
                             android:textSize="20dp"
-                            android:layout_marginLeft="5dp"
-                            android:background="#80000000"
-                            android:layout_marginStart="5dp"/>
+                            android:textStyle="bold" />
 
                     </RelativeLayout>
 
@@ -335,9 +339,12 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/otherc"
-                    android:layout_below="@+id/palmc"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/palmc"
+                    android:layout_margin="10dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -345,23 +352,21 @@
 
                         <ImageView
                             android:id="@+id/other"
-                            android:layout_width="190dp"
-                            android:layout_height="200dp"
-                            android:scaleY="1.5"
-                            android:layout_marginRight="5dp"
-                            android:src="@drawable/others"
-                            android:layout_marginEnd="5dp" />
+                            android:layout_width="170dp"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/others" />
 
                         <Button
                             android:id="@+id/otherbtn"
-                            android:layout_width="190dp"
+                            android:layout_width="170dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="147dp"
+                            android:layout_marginTop="131dp"
+                            android:background="#80000000"
                             android:hint="OTHERS"
                             android:textColorHint="#FFFFFF"
-                            android:textStyle="bold"
                             android:textSize="20dp"
-                            android:background="#80000000"/>
+                            android:textStyle="bold" />
 
                     </RelativeLayout>
 
@@ -373,4 +378,4 @@
 
     </ScrollView>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+</RelativeLayout>

@@ -3,14 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorAccent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".avenuePlants">
+    tools:context=".categories.avenuePlants">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_badge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/avenuelist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
-        android:id="@+id/avenuelist" />
+        android:layout_below="@+id/search_badge" />
 
 </RelativeLayout>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context=".billing.orderDetail">
+
+    <RelativeLayout
+        android:id="@+id/obill"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:padding="6dp"
+            android:background="@drawable/border"
+            android:id="@+id/odetailtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1">
+
+            <TableRow>
+
+                <TextView
+                    android:text="Name       :"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/obillname"
+                    android:textColor="#000"
+                    android:layout_marginStart="5dp"
+                    android:textSize="19dp"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:text="Phone No:"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/obillphone"
+                    android:textColor="#000"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="19dp"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:text="Address   :"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/obilladdress"
+                    android:textColor="#000"
+                    android:lines="5"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="19dp"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:text="Bill No.     :"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/obillno"
+                    android:textColor="#000"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="19dp"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Date          :"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/obilldate"
+                    android:textColor="#000"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="19dp"/>
+
+            </TableRow>
+
+        </TableLayout>
+
+        <TableLayout
+            android:layout_below="@+id/odetailtb"
+            android:layout_marginHorizontal="10dp"
+            android:padding="6dp"
+            android:id="@+id/odetailqty"
+            android:background="@drawable/border"
+            android:stretchColumns="1,2,3,4,5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:background="@drawable/border"
+                    android:padding="6dp"
+                    android:text="Sr no"
+                    android:layout_column="1"
+                    android:textColor="#000"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="160dp"
+                    android:background="@drawable/border"
+                    android:padding="6dp"
+                    android:layout_column="2"
+                    android:text="Product Description"
+                    android:textColor="#000"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:background="@drawable/border"
+                    android:padding="6dp"
+                    android:layout_column="3"
+                    android:text="Qty"
+                    android:textColor="#000"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="65dp"
+                    android:background="@drawable/border"
+                    android:text="Rate"
+                    android:padding="6dp"
+                    android:layout_column="4"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:layout_width="65dp"
+                    android:background="@drawable/border"
+                    android:text="Amount"
+                    android:padding="6dp"
+                    android:layout_column="5"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="13dp" />
+
+            </TableRow>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/orderbill"/>
+
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border"
+            android:layout_below="@+id/odetailqty"
+            android:padding="6dp">
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:textAlignment="textEnd"
+                    android:padding="6dp"
+                    android:text="Total amount :"
+                    android:textColor="#000"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/otamount"
+                    android:layout_width="79dp"
+                    android:padding="6dp"
+                    android:textAlignment="textEnd"
+                    android:textColor="#000"
+                    android:textSize="13dp" />
+
+            </TableRow>
+
+        </TableLayout>
+    </RelativeLayout>
+
+</ScrollView>

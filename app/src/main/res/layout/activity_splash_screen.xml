@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".splash_screen">
+    tools:context=".registration.splash_screen">
 
     <ImageView
         android:id="@+id/plantlogo"
@@ -35,9 +35,7 @@
         android:textSize="25sp"
         android:layout_below="@+id/txtby"
         android:layout_centerHorizontal="true"
-        android:textColor="#BBFF4D"
-        android:textStyle="bold"
-        />
+        android:textColor="@color/colorPrimary"/>
 
 </RelativeLayout>
 

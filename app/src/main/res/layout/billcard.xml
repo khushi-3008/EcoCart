@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1,2,3,4,5">
+    <TableRow>
+
+        <TextView
+            android:background="@drawable/border"
+            android:layout_width="50dp"
+            android:padding="6dp"
+            android:id="@+id/number"
+            android:layout_column="1"
+            android:textColor="#000"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="160dp"
+            android:background="@drawable/border"
+            android:layout_column="2"
+            android:padding="6dp"
+            android:id="@+id/product"
+            android:textColor="#000"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:background="@drawable/border"
+            android:id="@+id/qty"
+            android:text="1"
+            android:layout_column="3"
+            android:padding="6dp"
+            android:textColor="#000"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="65dp"
+            android:background="@drawable/border"
+            android:layout_column="4"
+            android:id="@+id/rate"
+            android:padding="6dp"
+            android:textColor="#000"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="65dp"
+            android:background="@drawable/border"
+            android:padding="6dp"
+            android:layout_column="5"
+            android:textStyle="bold"
+            android:id="@+id/amount"
+            android:textColor="#000"
+            android:textSize="13dp" />
+    </TableRow>
+</TableLayout>

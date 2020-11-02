@@ -3,59 +3,76 @@
     package="com.example.plant_cart">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcherf"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".bill"></activity>
-        <activity android:name=".cardDetail" />
-        <activity android:name=".cart" />
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".billing.emptyOrder" />
+        <activity android:name=".billing.orderDetail" />
+        <activity android:name=".billing.order" />
+        <activity android:name=".billing.payment" />
+        <activity android:name=".billing.bill" />
+        <activity android:name=".billing.address" />
+        <activity android:name=".categories.cardDetail" />
+        <activity android:name=".billing.cart" />
         <activity
-            android:name=".others"
+            android:theme="@style/AppTheme"
+            android:name=".categories.others"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".pot"
+            android:name=".categories.pot"
+            android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".palmPlants"
+            android:theme="@style/AppTheme"
+            android:name=".categories.palmPlants"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".outdoorPlants"
+            android:theme="@style/AppTheme"
+            android:name=".categories.outdoorPlants"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".medicinalPlants"
+            android:theme="@style/AppTheme"
+            android:name=".categories.medicinalPlants"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".indoorPlants"
+            android:theme="@style/AppTheme"
+            android:name=".categories.indoorPlants"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".fruitPlants"
+            android:theme="@style/AppTheme"
+            android:name=".categories.fruitPlants"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".floralPlants"
+            android:theme="@style/AppTheme"
+            android:name=".categories.floralPlants"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".avenuePlants"
+            android:theme="@style/AppTheme"
+            android:name=".categories.avenuePlants"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity" />
         <activity
-            android:name=".EditProfile"
-            android:parentActivityName=".Profile" />
-        <activity android:name=".splash_screen">
+            android:theme="@style/AppTheme"
+            android:name=".MainActivity" />
+        <activity
+            android:name=".registration.EditProfile"
+            android:parentActivityName=".registration.Profile" />
+        <activity android:name=".registration.splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login" />
-        <activity android:name=".Sign_Up" />
+        <activity android:name=".registration.Login" />
+        <activity android:name=".registration.Sign_Up" />
         <activity
-            android:name=".Profile"
+            android:name=".registration.Profile"
             android:parentActivityName=".MainActivity" />
     </application>
 

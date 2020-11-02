@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Sign_Up">
+    tools:context=".registration.Sign_Up">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:background="#20CDC8C9"
         android:layout_height="match_parent">
 
         <ImageView
@@ -106,15 +106,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <EditText
-            android:drawablePadding="20dp"
-            android:id="@+id/password"
-            android:ems="10"
-            android:drawableRight="@drawable/ic_baseline_remove_red_eye_24"
-            android:inputType="textPassword"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_baseline_remove_red_eye_24" />
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:drawablePadding="20dp"
+                android:id="@+id/password"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/show_pass_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:alpha=".5"
+                android:onClick="ShowHidePass"
+                android:padding="5dp"
+                android:src="@drawable/ic_baseline_remove_red_eye_24" />
+
+        </RelativeLayout>
 
         <Button
             android:id="@+id/registerBtn"
@@ -139,23 +154,12 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageVIew"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logo"
-        android:background="@drawable/background_white"
-        android:padding="5dp"
-        android:layout_width="70dp"
-        android:layout_height="70dp" />
-
     <TextView
         android:textSize="30sp"
         android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/imageVIew"
         android:text="SIGN UP"
+        android:layout_marginTop="100dp"
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
