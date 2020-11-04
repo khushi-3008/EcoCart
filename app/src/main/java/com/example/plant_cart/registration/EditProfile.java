@@ -63,8 +63,8 @@ public class EditProfile extends AppCompatActivity {
         saveBtn = findViewById(R.id.saveProfileInfo);
 
         //Back button
-        getSupportActionBar().setTitle("Edit Profile");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setTitle("Edit Profile");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

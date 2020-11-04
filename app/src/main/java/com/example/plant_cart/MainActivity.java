@@ -117,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, Profile.class);
                         finish();
                         startActivity(intent);
-                        overridePendingTransition(0,0);
                         return true;
                     }
 
@@ -420,25 +419,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
             case R.id.logout: {
-                AlertDialog.Builder confirmorderDialog = new AlertDialog.Builder(MainActivity.this);
-                confirmorderDialog.setTitle("Are you sure you want to Logout?");
-                confirmorderDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getApplicationContext(), Login.class));
-                        finish();
-                    }
-                });
 
-                confirmorderDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-                confirmorderDialog.create().show();
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
 
             }
         }

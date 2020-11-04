@@ -245,7 +245,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // open gallery
-                Intent i = new Intent(v.getContext(), EditProfile.class);
+                Intent i = new Intent(Profile.this, EditProfile.class);
                 i.putExtra("fullName",fullName.getText().toString());
                 i.putExtra("email",email.getText().toString());
                 i.putExtra("phone",phone.getText().toString());

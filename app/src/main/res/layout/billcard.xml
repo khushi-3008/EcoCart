@@ -44,7 +44,7 @@
             android:textSize="13dp" />
 
         <TextView
-            android:layout_width="65dp"
+            android:layout_width="60dp"
             android:background="@drawable/border"
             android:padding="6dp"
             android:layout_column="5"
